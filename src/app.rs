@@ -17,8 +17,7 @@ impl State {
         Ok(Self { window })
     }
 
-    pub fn resize(&mut self, _width: u32, _height: u32) {
-    }
+    pub fn resize(&mut self, _width: u32, _height: u32) {}
 
     pub fn render(&mut self) {
         // winit only draws one frame unless the window is resize or we request it to draw another
@@ -67,10 +66,11 @@ impl ApplicationHandler for App {
                         ..
                     },
                 ..
-            } => match (code, key_state.is_pressed()) {
-                (KeyCode::Escape, true) => event_loop.exit(),
-                _ => {}
-            },
+            } => {
+                if let (KeyCode::Escape, true) = (code, key_state.is_pressed()) {
+                    event_loop.exit();
+                }
+            }
             _ => {}
         }
     }
