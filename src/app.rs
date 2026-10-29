@@ -105,7 +105,7 @@ struct App {
 }
 
 impl ApplicationHandler for App {
-    // resumed happens when
+    // called on startup, and when returning to the app on mobile operating systems
     fn resumed(&mut self, event_loop: &winit::event_loop::ActiveEventLoop) {
         // here we create a window and initialize the app's state with that window
         let window_attributes = Window::default_attributes();
